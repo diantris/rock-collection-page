@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Rock Collection</title>
+<meta name="description" content="A personal collection of rocks, minerals and cabochons, many still waiting to be identified.">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<main class="page">
+  <header class="site-header">
+    <h1>Rock Collection</h1>
+    <p class="intro">A personal collection of rocks, minerals and cabochons. Many of them are unidentified, or only tentatively identified: each page shows the photos and what has been observed and measured so far.</p>
+    <p class="intro">If you know what one of them is, or have an idea, please mention its number (#…) when you reply.</p>
+    <p class="stats">3 specimens · 1 still unidentified</p>
+  </header>
+
+  <div class="toolbar" data-filters hidden>
+    <input type="search" class="search" placeholder="Search by name or material, or #number" aria-label="Search specimens" data-filter-search>
+    <button type="button" class="chip chip-toggle" aria-pressed="false" data-filter-unidentified>Unidentified only</button>
+    <span class="toolbar-count" aria-live="polite" data-filter-count></span>
+  </div>
+
+  <ul class="cards">
+    <li class="card" data-search="#74 dalmatian stone (demo) dalmatian jasper arfvedsonite (tentative)" data-unidentified="false">
+      <a href="specimens/74/">
+        <img class="card-image" src="photos/74/74-9429237f-small.jpg" alt="" loading="lazy">
+        
+        <span class="card-body">
+          <span class="card-number">#74</span>
+          <span class="card-name">Dalmatian Stone (demo)</span>
+          <span class="card-identity">Arfvedsonite (tentative)</span>
+          
+        </span>
+      </a>
+    </li>
+    <li class="card" data-search="#75 scrap-bin find (demo) rhyolite (tentative), amethyst" data-unidentified="false">
+      <a href="specimens/75/">
+        <img class="card-image" src="photos/75/75-89dfc586-small.jpg" alt="" loading="lazy">
+        
+        <span class="card-body">
+          <span class="card-number">#75</span>
+          <span class="card-name">Scrap-bin find (demo)</span>
+          <span class="card-identity">Rhyolite (tentative), Amethyst</span>
+          
+        </span>
+      </a>
+    </li>
+    <li class="card" data-search="#76 piasek pustyni (demo)" data-unidentified="true">
+      <a href="specimens/76/">
+        
+        <span class="card-image card-image-empty" aria-hidden="true"></span>
+        <span class="card-body">
+          <span class="card-number">#76</span>
+          <span class="card-name">Piasek Pustyni (demo)</span>
+          
+          <span class="badge">Unidentified</span>
+        </span>
+      </a>
+    </li>
+  </ul>
+  <p class="empty" data-filter-empty hidden>No specimens match.</p>
+</main>
+<script src="assets/site.js"></script>
+</body>
+</html>
