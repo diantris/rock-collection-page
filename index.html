@@ -15,13 +15,41 @@
     <h1>Rock Collection</h1>
     <p class="intro">A personal collection of rocks, minerals and cabochons. Many of them are unidentified, or only tentatively identified: each page shows the photos and what has been observed and measured so far.</p>
     <p class="intro">If you know what one of them is, or have an idea, please mention its number (#…) when you reply.</p>
-    <p class="stats">0 specimens · 0 still unidentified</p>
+    <p class="stats">2 specimens · 2 still unidentified</p>
   </header>
 
+  <div class="toolbar" data-filters hidden>
+    <input type="search" class="search" placeholder="Search by name or material, or #number" aria-label="Search specimens" data-filter-search>
+    <button type="button" class="chip chip-toggle" aria-pressed="false" data-filter-unidentified>Unidentified only</button>
+    <span class="toolbar-count" aria-live="polite" data-filter-count></span>
+  </div>
 
   <ul class="cards">
+    <li class="card" data-search="#315 rhyolite with amethyst (?) unknown" data-unidentified="true">
+      <a href="specimens/315/">
+        <img class="card-image" src="photos/315/315-c93bbd25-small.jpg" alt="" loading="lazy">
+        
+        <span class="card-body">
+          <span class="card-number">#315</span>
+          <span class="card-name">Rhyolite with amethyst (?)</span>
+          
+          <span class="badge">Unidentified</span>
+        </span>
+      </a>
+    </li>
+    <li class="card" data-search="#316 brecciated jasper (?) unknown" data-unidentified="true">
+      <a href="specimens/316/">
+        <img class="card-image" src="photos/316/316-c072fb7e-small.jpg" alt="" loading="lazy">
+        
+        <span class="card-body">
+          <span class="card-number">#316</span>
+          <span class="card-name">Brecciated jasper (?)</span>
+          
+          <span class="badge">Unidentified</span>
+        </span>
+      </a>
+    </li>
   </ul>
-  <p class="empty">Nothing has been published yet.</p>
   <p class="empty" data-filter-empty hidden>No specimens match.</p>
 </main>
 <script src="assets/site.js"></script>
