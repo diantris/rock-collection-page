@@ -1,4 +1,4 @@
-// site.js - Small enhancements for the public site: index search / filter / sort, and gallery arrows, dots and keys.
+// site.js - Small enhancements for the public site: index search / filter / sort, gallery arrows, dots and keys, and the message box.
 // Everything works without it: all cards are listed (in the owner's order), and the gallery still swipes and scrolls.
 (function () {
   'use strict';
@@ -131,4 +131,52 @@
     expandButton.hidden = false;
     mark(0);
   });
+
+  // ---- specimen page: message box --------------------------------------------------------------------------------
+  // Sends the message to the owner's Google Apps Script, which saves it in their Google Sheet. The script is on
+  // another site, so its answer can't be read ("no-cors"); the request arriving is all that matters. Without JS the
+  // box stays hidden (sending the form plainly would leave the visitor on a bare "ok" page).
+  var messageForm = document.querySelector('[data-message]');
+  if (messageForm && window.fetch && window.URLSearchParams && window.FormData) {
+    var messageText = messageForm.querySelector('textarea');
+    var messageCount = messageForm.querySelector('[data-message-count]');
+    var messageStatus = document.querySelector('[data-message-status]');
+    var sendButton = messageForm.querySelector('button[type="submit"]');
+    var maxLength = messageText.getAttribute('maxlength');
+    var countMessage = function () { messageCount.textContent = messageText.value.length + ' / ' + maxLength; };
+    // This browser's messages about this stone; from the fourth one on, nothing is sent (the script has its own limits)
+    var sentKey = 'rock-collection-sent-' + messageForm.elements.specimen.value;
+    var sentBefore = function () {
+      try { return Number(localStorage.getItem(sentKey)) || 0; } catch (err) { return 0; }
+    };
+    var finish = function (text) {
+      messageForm.hidden = true;
+      messageStatus.textContent = text;
+      messageStatus.focus();
+    };
+
+    messageText.addEventListener('input', countMessage);
+    messageForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!messageText.value.trim()) { messageText.focus(); return; }
+      if (sentBefore() >= 3) {
+        finish('Thank you, I’m still reviewing your previous messages about this stone.');
+        return;
+      }
+      sendButton.disabled = true;
+      sendButton.textContent = 'Sending…';
+      messageStatus.textContent = '';
+      fetch(messageForm.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(messageForm)) })
+        .then(function () {
+          try { localStorage.setItem(sentKey, String(sentBefore() + 1)); } catch (err) { /* private mode: not counted */ }
+          finish('Thank you! Your message has been sent.');
+        }, function () {
+          sendButton.disabled = false;
+          sendButton.textContent = 'Send';
+          messageStatus.textContent = 'Sorry, it couldn’t be sent. Please check your connection and try again.';
+        });
+    });
+    countMessage();
+    messageForm.hidden = false;
+  }
 })();

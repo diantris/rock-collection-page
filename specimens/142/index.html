@@ -70,7 +70,23 @@
   </section>
 
 
-  <aside class="callout">Know what this is, or have an idea? Please mention <strong>specimen #142</strong> when you reply.</aside>
+  <section class="callout message-box" aria-labelledby="message-title">
+    <h2 id="message-title">Know what this is, or have an idea?</h2>
+    <form action="https://script.google.com/macros/s/AKfycbx4aZDDh5wuNDDO9jEMkdxEdZ9SALGtRD06t2UEPCsTlBJm4knJ4i8pn5PmpvTEYMTY/exec" method="post" data-message hidden>
+      <input type="hidden" name="specimen" value="142">
+      <input type="hidden" name="stone" value="Brecciated jasper">
+      <div class="message-trap" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <textarea name="message" rows="4" maxlength="300" required aria-label="Your message" aria-describedby="message-note"
+        placeholder="Your thoughts on #142. Add your email if you’d like a reply."></textarea>
+      <div class="message-actions">
+        <p class="message-note" id="message-note">Only I read these, nothing is published. Links are removed, except to mindat.org.</p>
+        <span class="message-count" data-message-count aria-hidden="true"></span>
+        <button type="submit" class="button-filled">Send</button>
+      </div>
+    </form>
+    <p class="message-status" role="status" tabindex="-1" data-message-status></p>
+    <noscript><p>Please mention <strong>specimen #142</strong> when you reply.</p></noscript>
+  </section>
   </div>
   </div>
 
